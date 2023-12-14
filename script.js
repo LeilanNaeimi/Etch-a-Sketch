@@ -14,6 +14,11 @@ for (var i = 1; i <= 16; i++) {
     let div = document.createElement("div");
     div.className = "box";
     row.appendChild(div);
+
+    div.addEventListener("click", function () {
+      div.style.backgroundColor = "blue";
+      console.log("blue");
+    });
   }
 
   container.appendChild(row);
@@ -24,3 +29,4 @@ value.textContent = "16 * 16";
 input.addEventListener("input", (e) => {
   value.textContent = `${e.target.value} * ${e.target.value}`;
 });
+/**************** */
