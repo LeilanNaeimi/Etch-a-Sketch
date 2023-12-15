@@ -2,45 +2,43 @@ const sliderValue = document.querySelector("#sliderValue");
 const inputVol = document.querySelector("#vol");
 const btnClear = document.querySelector(".clear");
 const btnErase = document.querySelector(".erase");
-
 const colorPicker = document.getElementById("colorPicker");
 let coloredDivs = [];
 
 let container = document.createElement("div");
 container.classList.add("container");
+container.setAttribute("id", "container");
 document.body.appendChild(container);
 
 // /******** */
-const selectedColor = colorPicker.addEventListener("input", function () {
+let selectedColor = colorPicker.addEventListener("input", function () {
   const color = this.value;
-  createDiv(color);
-  console.log(100);
+  createDiv(color, inputVol.value);
 });
 
-// console.log(color);
-createDiv("gray");
+createDiv("gray", inputVol.value);
 
-function createDiv(color) {
+function createDiv(color, size) {
   container.textContent = "";
-  // coloredDivs = [];
-  for (var i = 1; i <= 16; i++) {
+  document.getElementById("container").style.resize = "none";
+
+  const maxContainerSizePx = 64 * 64; // 1rem = 16px
+
+  size = Math.min(size, 64);
+
+  const boxSize = size / maxContainerSizePx;
+
+  for (var i = 1; i <= size; i++) {
     let row = document.createElement("div");
     row.style.display = "flex";
 
-    for (var j = 1; j <= 16; j++) {
+    for (var j = 1; j <= size; j++) {
       let div = document.createElement("div");
       div.className = "box";
       row.appendChild(div);
 
-      // div.addEventListener(
-      //   "mouseover",
-      //   (function (newColor) {
-      //     return function () {
-      //       div.style.backgroundColor = newColor;
-      //     };
-      //   })(color)
-      // );
       div.addEventListener("mouseover", changeColor(color));
+
       function changeColor(newColor) {
         return function () {
           div.style.backgroundColor = newColor;
@@ -50,33 +48,37 @@ function createDiv(color) {
     }
     container.appendChild(row);
   }
+  container.querySelectorAll(".box").forEach((box) => {
+    box.style.width = `${boxSize}px`;
+    box.style.height = `${boxSize}px`;
+  });
 }
 
 /******** slider value ************/
 sliderValue.textContent = "16 * 16";
 inputVol.addEventListener("input", (e) => {
   sliderValue.textContent = `${e.target.value} * ${e.target.value}`;
+
+  // console.log(sliderValue.textContent);
+  createDiv("gray", `${e.target.value}`);
 });
 /***** clear page **** */
 
 btnClear.addEventListener("click", clear);
 
 function clear() {
-  let allBox = document.querySelectorAll(".box");
-  allBox.forEach(function (box) {
-    // Set background color to empty string to erase
+  coloredDivs.forEach((div) => {
+    div.style.backgroundColor = "";
+  });
+  coloredDivs = [];
+}
+
+/******erase Color******** */
+/*********FIXME: */
+btnErase.addEventListener("click", eraseColor);
+
+function eraseColor() {
+  container.querySelectorAll(".box").forEach((box) => {
     box.style.backgroundColor = "";
   });
 }
-
-/*****   erase pixels  ****** */
-
-btnErase.addEventListener("click", erase);
-
-function erase() {
-  console.log(coloredDivs);
-  coloredDivs.forEach(function (coloredDiv) {
-    coloredDiv.style.backgroundColor = "red";
-  });
-}
-/********************* */
