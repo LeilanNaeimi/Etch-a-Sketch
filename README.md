@@ -1,4 +1,4 @@
-Etch-a-Sketch
+# Etch-a-Sketch
 
 https://leilannaeimi.github.io/Etch-a-Sketch/
 
