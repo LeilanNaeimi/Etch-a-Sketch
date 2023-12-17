@@ -62,8 +62,8 @@ inputVol.addEventListener("input", (e) => {
   // console.log(sliderValue.textContent);
   createDiv("gray", `${e.target.value}`);
 });
-/***** clear page **** */
 
+/***** clear page **** */
 btnClear.addEventListener("click", clear);
 
 function clear() {
@@ -73,7 +73,7 @@ function clear() {
   coloredDivs = [];
 }
 
-/******erase Color******** */
+/******   eraser  ******** */
 /*********FIXME: */
 btnErase.addEventListener("click", eraseColor);
 

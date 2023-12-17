@@ -34,9 +34,9 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-.box:hover {
+/* .box:hover {
   background-color: rgb(9, 94, 65);
-}
+} */
 
 .boxes {
   display: flex;
