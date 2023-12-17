@@ -11,22 +11,36 @@ container.setAttribute("id", "container");
 document.body.appendChild(container);
 
 // /******** */
-let selectedColor = colorPicker.addEventListener("input", function () {
-  const color = this.value;
-  createDiv(color, inputVol.value);
+colorPicker.addEventListener("input", function (event) {
+  const color = event.target.value;
+  const divs = document.querySelectorAll(".box");
+  drawColor(color);
 });
+
+function drawColor(color) {
+  const divs = document.querySelectorAll(".box");
+  for (i = 0; i < divs.length; i++) {
+    divs[i].addEventListener("click", changeColor(color, divs[i]));
+  }
+}
+
+function changeColor(newColor, div) {
+  div.style.backgroundColor = newColor;
+  coloredDivs.push(div);
+}
 
 createDiv("gray", inputVol.value);
 
 function createDiv(color, size) {
   container.textContent = "";
-  document.getElementById("container").style.resize = "none";
+  const book = document.getElementById("container");
+  book.style.resize = "none";
 
-  const maxContainerSizePx = 64 * 64; // 1rem = 16px
+  const maxContainerSizePx = 640; // 1rem = 16px
+  book.style.width = maxContainerSizePx;
+  book.style.height = maxContainerSizePx;
 
-  size = Math.min(size, 64);
-
-  const boxSize = size / maxContainerSizePx;
+  const boxSize = maxContainerSizePx / size;
 
   for (var i = 1; i <= size; i++) {
     let row = document.createElement("div");
