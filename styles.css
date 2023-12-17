@@ -21,10 +21,7 @@ body {
   border: 1px solid gray;
   margin: 3rem;
   background-color: #faeed1;
-  /* width: 32rem;
-  height: 32rem; */
   resize: none;
-  /* width: 70rem; */
 }
 
 .box {
