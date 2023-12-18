@@ -2,6 +2,7 @@
   --primary-dark: #333;
   --primary-light: #fce7f2;
   --secondary-light: #fefefe;
+  --secondary-dark: #dbdbdb;
 }
 
 *,
@@ -21,9 +22,32 @@ html {
 body {
   background-color: var(--primary-light);
   color: var(--primary-dark);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   margin-bottom: 100px;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #container {
+  border: 1px solid var(--primary-dark);
+  margin: 3rem;
+  background-color: var(--primary-light);
+  resize: none;
+} */
+
+.pixel {
+  box-sizing: border-box;
+  width: 1px;
+  padding: 0.5rem;
+  background-color: var(--secondary-light);
+}
+
+.pixel:hover {
+  background-color: rgb(9, 94, 65);
 }
 
 /* FOOTER */
