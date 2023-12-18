@@ -8,16 +8,19 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <label for="colorPicker">Choose a color:</label>
-    <input
-      type="color"
-      id="colorPicker"
-      value="#686868"
-      onchange="updateColor()"
-    />
-    <button class="clear" onclick="clearPage()">Clear</button>
-    <button class="eraser" onclick="eraser()">Eraser</button>
-    <button onclick="changeGridSize()">Change Grid Size</button>
+    <div class="detail">
+      <label for="colorPicker" class="lable">Choose a color:</label>
+      <input
+        type="color"
+        id="colorPicker"
+        value="#686868"
+        onchange="updateColor()"
+      />
+      <button class="btn clear" onclick="clearPage()">Clear</button>
+      <button class="btn eraser" onclick="eraser()">Eraser</button>
+      <button class="btn" onclick="changeGridSize()">Change Grid Size</button>
+    </div>
+
     <div id="container"></div>
 
     <footer class="footer">
