@@ -8,15 +8,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="boxes">
-      <button class="btn clear">Clear</button>
-      <button class="btn erase">Eraser</button>
-      <div class="sliderSize"><output id="sliderValue"></output></div>
-      <input type="range" id="vol" min="1" max="64" step="1" />
-      <label for="vol"> </label>
-
-      <label for="colorPicker"></label>
-      <input id="colorPicker" type="color" />
-    </div>
+    <div id="container"></div>
+    <button onclick="changeGridSize()">Change Grid Size</button>
   </body>
 </html>
