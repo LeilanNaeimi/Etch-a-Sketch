@@ -1,7 +1,7 @@
 const container = document.getElementById('container');
 
 let gridSize = 16;
-let currentColor = '#000000';
+let currentColor = '#686868';
 
 function createGrid() {
   container.innerHTML = '';
@@ -42,4 +42,15 @@ function changeGridSize() {
 
 createGrid();
 
-/******** color picker */
+/******** clear page */
+function clearPage() {
+  container.querySelectorAll('.pixel').forEach((pixel) => {
+    pixel.style.backgroundColor = '';
+  });
+}
+
+/******** Eraser  ********* */
+function eraser() {
+  const colorPicker = document.getElementById('colorPicker');
+  currentColor = '#fce7f2';
+}
