@@ -1,17 +1,17 @@
 let container = document.querySelector('.container');
+let coloredGrid = [];
 
 function createGrid(numberOfSquares) {
-  // console.log('grid');
   //Remove existing grid
+  container.innerHTML = '';
 
-  //Generate a new grid with the specified number of squares per side
+  //Generate a new grid with selected size
 
   const maxContainerSizePx = 640;
   container.style.width = maxContainerSizePx;
   container.style.hight = maxContainerSizePx;
 
   const boxSize = maxContainerSizePx / numberOfSquares;
-  console.log(boxSize);
 
   //Create square divs using a loop
 
@@ -35,20 +35,38 @@ function createGrid(numberOfSquares) {
   });
 }
 
-function hoverEffect() {
-  console.log('hoverEffect');
-  //Add event listeners for mouseenter and mouseleave events
+function coloring(color) {
+  createGrid(20);
 
-  //Change color of the grid div on mouseenter
+  container.addEventListener('mouseover', changeColor(color));
 
-  //Revert to the original color on mouseleave
+  function changeColor(newColor) {
+    return function () {
+      container.style.backgroundColor = newColor;
+      coloredGrid.push(container);
+    };
+  }
+  // container.addEventListener('mouseover', setColor);
+
+  // function setColor() {
+  //   let pixels = container.querySelectorAll('.pixel');
+  //   let pixel = container.querySelector('.pixel');
+
+  //   // pixels.forEach((pixel) => {
+  //   pixel.style.setProperty('--hover-color', color);
+  //   container.style.backgroundColor = color;
+  //   coloredGrid.push(container);
+
+  //   console.log(coloredGrid);
+  // });
+  // }
 }
 
-function btnClick() {
-  console.log('btnClick');
-  //Display a prompt to get user input for the number of squares per side
+// function btnClick() {
+//   console.log('btnClick');
+//   //Display a prompt to get user input for the number of squares per side
 
-  //Call the grid generation function with the entered input
-}
+//   //Call the grid generation function with the entered input
+// }
 
-createGrid(12);
+coloring('orange');
