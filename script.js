@@ -9,7 +9,7 @@ function createGrid() {
     let pixel = document.createElement('div');
     pixel.classList.add('pixel');
     pixel.addEventListener('mouseover', function () {
-      setColor(pixel);
+      setColor(pixel); // Pass the pixel element to the setColor function
     });
     container.appendChild(pixel);
   }
@@ -20,12 +20,12 @@ function setColor(pixel) {
 }
 
 function changeGridSize() {
-  let newSize = prompt('Enter the number of squares (max 100):');
+  let newSize = prompt('Enter the number of squares per side (max 100):');
 
+  // Validate input and set a maximum limit of 100 squares per side
   newSize = parseInt(newSize);
-  // console.log(newSize);
   if (isNaN(newSize) || newSize < 1) {
-    alert('Please enter a valid number greater than 0');
+    alert('Please enter a valid number greater than 0.');
     return;
   }
 
